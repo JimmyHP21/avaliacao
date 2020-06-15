@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- CREATE TABLE BURGER -->
+    <changeSet author="renan.peres" id="create-table-burger">
+        <createTable tableName="BURGER">
+            <column name="ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="DECIMAL(10,2)"/>
+            <column name="NAME" type="VARCHAR(90)"/>
+            <column name="PROMOTION" type="VARCHAR(90)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- TABLE BURGER ADD CONSTRAINTS -->
+    <changeSet id="crate-constraints-table-burger" author="renan.peres">
+        <addPrimaryKey tableName="BURGER" columnNames="ID"/>
+        <addAutoIncrement tableName="BURGER" columnName="ID" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+
+        <!-- ADD COLUMNS NOT NULL TABLE BURGER -->
+        <addNotNullConstraint tableName="BURGER" columnName="PRICE" columnDataType="DECIMAL(10,2)"/>
+    </changeSet>
+
+    <!-- TABLE BURGER INSERT VALUES -->
+    <changeSet author="renan.peres" id="insert-burger">
+        <insert tableName="BURGER">
+            <column name="ID" value="1"/>
+            <column name="PRICE" value="00.0"/>
+            <column name="NAME" value="X-Bacon"/>
+        </insert>
+        <insert tableName="BURGER">
+            <column name="ID" value="2"/>
+            <column name="PRICE" value="00.0"/>
+            <column name="NAME" value="X-Burger"/>
+        </insert>
+        <insert tableName="BURGER">
+            <column name="ID" value="3"/>
+            <column name="PRICE" value="00.0"/>
+            <column name="NAME" value="X-Egg"/>
+        </insert>
+        <insert tableName="BURGER">
+            <column name="ID" value="4"/>
+            <column name="PRICE" value="00.0"/>
+            <column name="NAME" value="X-Egg Bacon"/>
+        </insert>
+        <insert tableName="BURGER">
+            <column name="ID" value="5"/>
+            <column name="PRICE" value="00.0"/>
+            <column name="NAME" value="Light"/>
+        </insert>
+        <insert tableName="BURGER">
+            <column name="ID" value="6"/>
+            <column name="PRICE" value="00.0"/>
+            <column name="NAME" value="Muita carne"/>
+        </insert>
+        <insert tableName="BURGER">
+            <column name="ID" value="7"/>
+            <column name="PRICE" value="00.0"/>
+            <column name="NAME" value="Muito queijo"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

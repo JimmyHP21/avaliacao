@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- CREATE TABLE BURGER_INGREDIENTS -->
+    <changeSet author="renan.peres" id="create-table-burger_ingredients">
+        <createTable tableName="BURGER_INGREDIENTS">
+            <column name="ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BURGER_ID" type="BIGINT"/>
+            <column name="INGREDIENTS_ID" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- TABLE BURGER_INGREDIENTS ADD CONSTRAINTS -->
+    <changeSet id="crate-constraints-table-burger_ingredients" author="renan.peres">
+        <addPrimaryKey tableName="BURGER_INGREDIENTS" columnNames="ID"/>
+        <addAutoIncrement tableName="BURGER_INGREDIENTS" columnName="ID" columnDataType="BIGINT" incrementBy="1"
+                          startWith="1"/>
+
+        <!-- ADD COLUMNS NOT NULL TABLE BURGER_INGREDIENTS -->
+        <addNotNullConstraint tableName="BURGER_INGREDIENTS" columnName="BURGER_ID" columnDataType="BIGINT"/>
+        <addNotNullConstraint tableName="BURGER_INGREDIENTS" columnName="INGREDIENTS_ID" columnDataType="BIGINT"/>
+    </changeSet>
+
+
+    <!-- TABLE BURGER_INGREDIENTS ADD FOREIGN KEY -->
+    <changeSet id="create-foreign-key-table-burger_ingredients" author="renan.peres">
+        <addForeignKeyConstraint baseTableName="BURGER_INGREDIENTS"
+                                 baseColumnNames="BURGER_ID"
+                                 referencedColumnNames="ID"
+                                 referencedTableName="BURGER"
+                                 constraintName="BURGER_ID"/>
+
+        <addForeignKeyConstraint baseTableName="BURGER_INGREDIENTS"
+                                 baseColumnNames="INGREDIENTS_ID"
+                                 constraintName="INGREDIENTS_ID"
+                                 referencedTableName="INGREDIENTS"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+
+    <changeSet author="renan.peres" id="insert-burger_ingredients">
+        <!-- X-BACON -->
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="1"/>
+            <column name="INGREDIENTS_ID" value="1"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="1"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="1"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+
+        <!-- X-BURGER -->
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="2"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="2"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+
+        <!-- X-EGG -->
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="3"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="3"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="3"/>
+            <column name="INGREDIENTS_ID" value="2"/>
+        </insert>
+
+        <!-- X-EGG BACON -->
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="4"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="4"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="4"/>
+            <column name="INGREDIENTS_ID" value="2"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="4"/>
+            <column name="INGREDIENTS_ID" value="1"/>
+        </insert>
+
+        <!-- LIGHT -->
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="5"/>
+            <column name="INGREDIENTS_ID" value="5"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="5"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+
+        <!-- MUITA CARNE -->
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="3"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="6"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+
+        <!-- MUITO QUEIJO -->
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="4"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="5"/>
+        </insert>
+        <insert tableName="BURGER_INGREDIENTS">
+            <column name="BURGER_ID" value="7"/>
+            <column name="INGREDIENTS_ID" value="2"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

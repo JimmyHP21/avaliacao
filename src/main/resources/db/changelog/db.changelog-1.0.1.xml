@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <!-- CREATE TABLE INGREDIENT -->
+    <changeSet author="renan.peres" id="create-table-ingredient">
+        <createTable tableName="INGREDIENTS">
+            <column name="ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(90)"/>
+            <column name="PRICE" type="DECIMAL(10,2)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- TABLE INGREDIENT ADD CONSTRAINTS -->
+    <changeSet id="crate-constraints-table-ingredient" author="renan.peres">
+        <addPrimaryKey tableName="INGREDIENTS" columnNames="ID"/>
+        <addAutoIncrement tableName="INGREDIENTS" columnName="ID" columnDataType="BIGINT" incrementBy="1" startWith="1"/>
+
+        <!-- ADD COLUMNS NOT NULL TABLE INGREDIENT -->
+        <addNotNullConstraint tableName="INGREDIENTS" columnName="PRICE" columnDataType="DECIMAL(10,2)"/>
+        <addNotNullConstraint tableName="INGREDIENTS" columnName="NAME" columnDataType="VARCHAR(90)"/>
+    </changeSet>
+
+
+    <!-- TABLE INGREDIENT INSERT VALUES -->
+    <changeSet author="renan.peres" id="insert-ingredient">
+        <insert tableName="INGREDIENTS">
+            <column name="ID" value="1"/>
+            <column name="PRICE" value="2.00"/>
+            <column name="NAME" value="Bacon"/>
+        </insert>
+        <insert tableName="INGREDIENTS">
+            <column name="ID" value="2"/>
+            <column name="PRICE" value="0.80"/>
+            <column name="NAME" value="Ovo"/>
+        </insert>
+        <insert tableName="INGREDIENTS">
+            <column name="ID" value="3"/>
+            <column name="PRICE" value="3.00"/>
+            <column name="NAME" value="Hambúrguer"/>
+        </insert>
+        <insert tableName="INGREDIENTS">
+            <column name="ID" value="4"/>
+            <column name="PRICE" value="1.50"/>
+            <column name="NAME" value="Queijo"/>
+        </insert>
+        <insert tableName="INGREDIENTS">
+            <column name="ID" value="5"/>
+            <column name="PRICE" value="0.40"/>
+            <column name="NAME" value="Alface"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

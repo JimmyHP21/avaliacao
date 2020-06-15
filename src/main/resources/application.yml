@@ -1,0 +1,32 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    url: jdbc:h2:mem:project-finch?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: finch
+    driver-class-name: org.h2.Driver
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: true
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: America/Sao_Paulo
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+  output:
+    ansi:
+      enabled: ALWAYS
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+    operations-sorter: method
+server:
+  port: 8090
